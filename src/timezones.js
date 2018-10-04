@@ -7,6 +7,10 @@ const timezones = [];
 for (let i = 0; i < timezoneNames.length; i++) {
   const timezoneName = timezoneNames[i];
 
+  if (/\d/.test(timezoneName)) continue;
+  if (timezoneName.includes('Etc/')) continue;
+  if (timezoneName === timezoneName.toUpperCase()) continue;
+
   timezones.push({
     value: timezoneName,
     label: timezoneName,
