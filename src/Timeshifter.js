@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import React, { Component } from 'react';
 import { DateTime } from 'luxon';
 import Grid from '@material-ui/core/Grid';
@@ -24,12 +25,12 @@ class Timeshifter extends Component {
   }
 
   addRecord = () => {
-    const record = {}
-
-    const records = this.state.records;
+    const { records } = this.state;
+    const record = {
+      key: shortid.generate()
+    }
 
     records.push(record);
-
     this.setState({ records })
     localStorage.setItem('records', JSON.stringify(records));
   }
@@ -39,9 +40,7 @@ class Timeshifter extends Component {
   }
 
   removeHandler = (id) => {
-    const records = this.state.records;
-
-    records.splice(id, 1);
+    const records = this.state.records.filter(record => record.key !== id);
 
     this.setState({ records });
     localStorage.setItem('records', JSON.stringify(records));
@@ -50,13 +49,11 @@ class Timeshifter extends Component {
   render() {
 
     const rows = this.state.records.map((record, index) => {
-      const readOnly = (index !== 0);
-
       return (
         <DateTimezonePair
-          key={index}
-          id={index}
-          readOnly={readOnly}
+          key={record.key}
+          id={record.key}
+          readOnly={index !== 0}
           utc={this.state.utc}
           updateHandler={this.updateHandler}
           removeHandler={this.removeHandler}
