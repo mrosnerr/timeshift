@@ -28,12 +28,8 @@
 }
 
 .icon {
-  font-size: 30px;
-  height: 75px;
+  font-size: 30px !important;
   margin: 10px;
-  '&:hover': {
-    color: red;
-  }
 }
 
 .container {
@@ -43,6 +39,7 @@
 
 .row {
   padding: 15px;
+  margin: 10px;
   border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
