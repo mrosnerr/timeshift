@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import TextField from '@material-ui/core/TextField';
-import Hidden from '@material-ui/core/Hidden';
 import Select from 'react-select';
 import { Remove } from '@material-ui/icons';
 import { DateTime } from 'luxon';
@@ -65,51 +62,24 @@ class DateTimezonePair extends Component {
     )
 
     return (
-        <Grid container>
-          <Hidden xsDown>
-            <TableRow key={this.props.id}>
-              <TableCell style={{width: 300, padding: '2em', textAlign: 'center'}}>
-                {timezoneSelector}
-              </TableCell>
-              <TableCell style={{width: 300, padding: '2em', textAlign: 'center'}}>
-                {datetimeSelector}
-              </TableCell>
-              <TableCell style={{width: 100, padding: '2em', textAlign: 'center'}}>
-                <Remove style={{ fontSize: 30 }} onClick={this.removeHandler}/>
-              </TableCell>
-            </TableRow>
-          </Hidden>
-          <Hidden smUp>
-              <Grid container spacing={12}
-                justify="left"
-                alignItems="center"
-                style={{
-                  height: '100px',
-                  marginTop: '10px',
-                  marginLeft: '15px',
-                  borderBottom: '1px solid rgba(224, 224, 224, 1)',
-                }}
-              >
-                <Grid item xs={8} container>
-                  <Grid item xs={12}>
-                    {timezoneSelector}
-                  </Grid>
-                  <Grid item xs={12}>
-                    {datetimeSelector}
-                  </Grid>
-                </Grid>
-                <Grid item xs={4} container
-                    justify="center"
-                    alignItems="center"
-                    alignContent="center"
-                >
-                  <Grid item xs={12}>
-                    <Remove style={{ fontSize: 30 }} onClick={this.removeHandler}/>
-                  </Grid>
-                </Grid>
-              </Grid>
-          </Hidden>
+      <Grid container
+        spacing={3}
+        direction="row"
+        justify="center"
+        alignItems="center"
+        alignContent="center"
+        className="row"
+      >
+        <Grid item sm={6} xs={12} className="timezone">
+          {timezoneSelector}
         </Grid>
+        <Grid item sm={5} xs={12} className="datetime">
+          {datetimeSelector}
+        </Grid>
+        <Grid item sm={1} xs={2} className="remove">
+          <Remove className="icon" onClick={this.removeHandler}/>
+        </Grid>
+      </Grid>
     )
   }
 }

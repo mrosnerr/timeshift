@@ -27,24 +27,40 @@
   to { transform: rotate(360deg); }
 }
 
-.paper: {
-  width: 100%;
-  marginTop: 10px;
-  overflowX: 'auto';
-}
-.table: {
-  minWidth: 700,
-}
-
-.icon: {
-  margin: 20px;
-
-}
-
-.iconHover: {
-  margin: 20px,
+.icon {
+  font-size: 30px;
+  height: 75px;
+  margin: 10px;
   '&:hover': {
     color: red;
   }
 }
 
+.container {
+  max-width: 700px;
+  margin: 25px auto;
+}
+
+.row {
+  padding: 15px;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.field {
+  width: 300px;
+  padding: 10px 20px;
+}
+
+.timezone {
+  width: 300px;
+  padding: 5px 20px;
+}
+
+.datetime {
+  width: 300px;
+  padding: 5px 20px;
+}
+
+.remove {
+
+}
