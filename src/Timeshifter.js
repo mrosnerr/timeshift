@@ -10,7 +10,6 @@ class Timeshifter extends Component {
     super();
     const cached = localStorage.getItem('records');
     const records = cached ? JSON.parse(cached) : [];
-    console.log('records', records);
     this.state = {
       records,
       utc: DateTime.utc()
