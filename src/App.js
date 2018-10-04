@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MetaTags from 'react-meta-tags';
-import Hidden from '@material-ui/core/Hidden';
-import ViewWeb from './ViewWeb';
+import Timeshifter from './Timeshifter';
 import './App.css';
 
 class App extends Component {
@@ -18,9 +17,7 @@ class App extends Component {
         <p className="App-intro">
           A utility for deriving dates + times across timezones
         </p>
-        <Hidden xsDown>
-          <ViewWeb />
-        </Hidden>
+        <Timeshifter />
       </div>
     );
   }
