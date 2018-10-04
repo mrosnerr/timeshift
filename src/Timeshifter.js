@@ -65,10 +65,7 @@ class Timeshifter extends Component {
     });
 
     return (
-      <Grid container
-        direction="column"
-        className="container"
-      >
+      <Grid container direction="column" className="container">
         <Grid item xs={12}>
           {rows}
         </Grid>

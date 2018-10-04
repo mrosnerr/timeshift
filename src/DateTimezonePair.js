@@ -62,9 +62,7 @@ class DateTimezonePair extends Component {
     )
 
     return (
-      <Grid container
-        spacing={3}
-        direction="row"
+      <Grid container spacing={3}
         justify="center"
         alignItems="center"
         alignContent="center"
