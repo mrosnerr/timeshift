@@ -52,11 +52,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "dev": "node scripts/start.js",
+    "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "prestart": "npm run build",
-    "start": "node ./node_modules/.bin/serve -l 8080 -s -n build"
+    "deploy": "node ./node_modules/.bin/serve -l 8080 -s -n build"
   },
   "devDependencies": {
     "chai": "^4.1.2",
