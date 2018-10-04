@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Select from 'react-select';
 import { Remove } from '@material-ui/icons';
@@ -40,32 +39,45 @@ class DateTimezonePair extends Component {
     const zonedTime = utc.setZone(this.state.timezone.value)
     const localTime = zonedTime.toFormat(`yyyy-MM-dd'T'T`);
 
+    const timezoneSelector = (
+      <Select
+        style={{fontSize: '16px'}}
+        value={this.state.timezone}
+        onChange={(tz) => this.updateHandler(tz, localTime)}
+        options={timezones}
+      />
+    )
+
+    const datetimeSelector = (
+      <TextField
+        style={{fontSize: '16px'}}
+        type="datetime-local"
+        disabled={this.props.readOnly}
+        value={localTime}
+        onChange={(e) => this.updateHandler(
+          this.state.timezone,
+          e.target.value
+        )}
+      />
+    )
+
     return (
-      <TableRow key={this.props.id}>
-        <TableCell style={{width: 300, padding: '2em', textAlign: 'center'}}>
-          <Select
-            style={{fontSize: '16px'}}
-            value={this.state.timezone}
-            onChange={(tz) => this.updateHandler(tz, localTime)}
-            options={timezones}
-          />
-        </TableCell>
-        <TableCell style={{width: 300, padding: '2em', textAlign: 'center'}}>
-          <TextField
-            style={{fontSize: '16px'}}
-            type="datetime-local"
-            disabled={this.props.readOnly}
-            value={localTime}
-            onChange={(e) => this.updateHandler(
-              this.state.timezone,
-              e.target.value
-            )}
-          />
-        </TableCell>
-        <TableCell style={{width: 100, padding: '2em', textAlign: 'center'}}>
-          <Remove style={{ fontSize: 30 }} onClick={this.removeHandler}/>
-        </TableCell>
-      </TableRow>
+      <Grid container spacing={3}
+        justify="center"
+        alignItems="center"
+        alignContent="center"
+        className="row"
+      >
+        <Grid item sm={6} xs={12} className="timezone">
+          {timezoneSelector}
+        </Grid>
+        <Grid item sm={5} xs={12} className="datetime">
+          {datetimeSelector}
+        </Grid>
+        <Grid item sm={1} xs={2} className="remove">
+          <Remove className="icon" onClick={this.removeHandler}/>
+        </Grid>
+      </Grid>
     )
   }
 }
