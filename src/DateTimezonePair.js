@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Select from 'react-select';
+import ga from './ga';
 import { Remove } from '@material-ui/icons';
 import { DateTime } from 'luxon';
 import { timezones, userTimezone } from './timezones';
@@ -16,8 +17,19 @@ class DateTimezonePair extends Component {
   }
 
   updateHandler = (timezone, localtime) => {
-    this.setState({ timezone });
-    localStorage.setItem(this.props.id, JSON.stringify(timezone));
+    if (timezone !== this.state.timezone) {
+      this.setState({ timezone });
+      localStorage.setItem(this.props.id, JSON.stringify(timezone));
+      try {
+        ga.event({
+            category: 'Timezone',
+            action: 'Select',
+            label: timezone || '',
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
     const utcTime = DateTime.fromISO(
       localtime,

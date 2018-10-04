@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ga from './ga';
 import MetaTags from 'react-meta-tags';
 import Timeshifter from './Timeshifter';
 import './App.css';
 
 class App extends Component {
   render() {
+    ga.pageview('/');
     return (
       <div className="App">
         <MetaTags>
