@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ga from './ga';
-import MetaTags from 'react-meta-tags';
 import Timeshifter from './Timeshifter';
 import './App.css';
 
@@ -9,10 +8,6 @@ class App extends Component {
     ga.pageview('/');
     return (
       <div className="App">
-        <MetaTags>
-          <title>Timeshift</title>
-          <meta name="description" content="A utility for deriving dates and times across timezones" />
-        </MetaTags>
         <header className="App-header">
           <h1 className="App-title">Timeshift</h1>
         </header>
